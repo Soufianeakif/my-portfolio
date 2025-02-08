@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and a clean, professional design.
 
-First, run the development server:
+![Portfolio Preview](public/images/logo.webp)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 Features
+
+- **Modern Tech Stack**: Built with Next.js 15
+- **Type-Safe**: Written in TypeScript for better development experience
+- **Responsive Design**: Looks great on all devices (mobile, tablet, desktop)
+- **Dark Mode**: Automatic and manual dark mode support
+- **Smooth Animations**: Page transitions and scroll animations using Framer Motion
+- **Contact Form**: Integrated with reCAPTCHA for spam protection
+- **Performance Optimized**: Fast loading times with optimized images and assets
+- **SEO Friendly**: Built with SEO best practices in mind
+
+## 🏗️ Architecture
+
+```
+portfolio/
+├── src/
+│   ├── app/                 # Next.js app directory
+│   │   ├── about/          # About page
+│   │   ├── contact/        # Contact page
+│   │   ├── projects/       # Projects page
+│   │   ├── skills/         # Skills page
+│   │   └── page.tsx        # Home page
+│   ├── components/         # Reusable components
+│   │   ├── Header.tsx      # Navigation header
+│   │   ├── Footer.tsx      # Footer component
+│   │   ├── HeroSection.tsx # Hero section
+│   │   └── ...            # Other components
+│   ├── context/           # React context providers
+│   ├── data/              # Static data and content
+│   └── styles/            # Global styles
+├── public/                # Static files
+│   └── images/           # Image assets
+└── package.json          # Project dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Core
+- **Next.js** (v15.1.6) - React framework for production
+- **React** (v19.0.0) - UI library
+- **TypeScript** (v5) - Type safety
+- **Tailwind CSS** (v3.4.1) - Utility-first CSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### UI/UX
+- **Framer Motion** (v12.4.1) - Animations
+- **React Type Animation** (v3.2.0) - Text animations
 
-## Learn More
+### Development
+- **ESLint** (v9) - Code linting
+- **PostCSS** (v8) - CSS processing
+- **TypeScript** (v5) - Type checking
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Soufianeakif/my-portfolio.git
+   cd my-portfolio
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Deploy on Vercel
+3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+   NEXT_PUBLIC_WEB3FORMS_KEY=your_web3forms_key
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Open [http://localhost:3000](http://localhost:3000)**
+
+## 🔧 Configuration
+
+- **Content**: Edit `src/data/content.json` to update site content
+- **Styling**: Modify `tailwind.config.js` for theme customization
+- **Components**: Add/edit components in `src/components`
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Breakpoints:
+  - Mobile: < 640px
+  - Tablet: 640px - 1024px
+  - Desktop: > 1024px
+
+## 🎨 Color Scheme
+
+- Primary: #DF6D14 (Orange)
+- Secondary: #9DC08B (Green)
+- Dark Mode Colors:
+  - Background: #111827
+  - Text: #F9FAFB
+
+## 📦 Build & Deploy
+
+1. **Build for production**
+   ```bash
+   npm run build
+   # or
+   yarn build
+   ```
+
+2. **Start production server**
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👤 Author
+
+- **AKIF Soufiane**
+- GitHub: [@Soufianeakif](https://github.com/Soufianeakif)
+- LinkedIn: [soufiane-akif](https://linkedin.com/in/soufiane-akif)
