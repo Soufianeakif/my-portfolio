@@ -1,74 +1,73 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import content from '@/data/content.json';
+import Image from 'next/image';
 import { useTheme } from '@/context/ThemeProvider';
 
 export const Header = () => {
-  const [openNavbar, setOpenNavbar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleNavbar = () => {
-    setOpenNavbar(openNavbar => !openNavbar);
-  };
-
   return (
-    <header className={`fixed left-0 top-0 w-full flex items-center h-24 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-md shadow-lg border-b border-[#DF6D14]/10' : ''
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800' : ''
     }`}>
-      <nav className="relative mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex gap-x-5 justify-between items-center">
-        <div className="flex items-center min-w-max">
-          <Link href="/" className="font-semibold flex items-center gap-x-2">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-x-2">
             <div className="w-10 h-10 relative rounded-full overflow-hidden">
               <Image
                 src="/images/logo.webp"
                 alt="Logo"
                 fill
+                sizes="40px"
                 className="object-cover"
-                priority
               />
             </div>
-            <span className="text-lg text-[#DF6D14] dark:text-[#9DC08B] font-bebas tracking-wide">{content.header.name}</span>
+            <span className="text-lg text-[#DF6D14] dark:text-[#9DC08B] font-bebas tracking-wide">
+              {content.header.name}
+            </span>
           </Link>
-        </div>
 
-        <div className={`
-          absolute top-full left-0 bg-white dark:bg-gray-950 lg:!bg-transparent border-b border-gray-200 dark:border-gray-800 
-          py-8 lg:py-0 px-5 sm:px-10 md:px-12 lg:px-0 lg:border-none lg:w-max lg:space-x-16 lg:top-0 lg:relative lg:flex 
-          duration-300 lg:transition-none ease-linear
-          ${openNavbar ? "translate-y-0 opacity-100 visible" : "translate-y-10 opacity-0 invisible lg:visible lg:translate-y-0 lg:opacity-100"}
-        `}>
-          <ul className="flex flex-col lg:flex-row gap-6 lg:items-center text-gray-700 dark:text-gray-300 lg:w-full lg:justify-center">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
             {content.header.navigation.map((item, index) => (
-              <li key={index}>
-                <Link 
-                  key={index}
-                  href={item.path} 
-                  className="text-gray-700 dark:text-gray-300 hover:text-[#DF6D14] dark:hover:text-[#DF6D14] transition-colors font-poppins"
-                  onClick={() => setOpenNavbar(false)}
-                >
-                  {item.title}
-                </Link>
-              </li>
+              <Link
+                key={index}
+                href={item.path}
+                className={`font-poppins text-sm transition-colors ${
+                  pathname === item.path
+                    ? 'text-[#DF6D14] dark:text-[#9DC08B]'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B]'
+                }`}
+              >
+                {item.title}
+              </Link>
             ))}
-          </ul>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:min-w-max mt-10 lg:mt-0">
+            {/* Theme Toggle - Desktop Only */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-900 text-purple-600 dark:text-gray-300 border border-gray-200 dark:border-gray-800"
+              className="hidden md:flex p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] border border-gray-200 dark:border-gray-700 transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
@@ -82,23 +81,80 @@ export const Header = () => {
               )}
             </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-expanded={isOpen}
+            aria-label="Toggle navigation menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
 
-        <div className="flex items-center lg:hidden">
-          <button 
-            onClick={toggleNavbar} 
-            aria-label="Toggle navbar" 
-            className="outline-none border-l border-l-gray-100 dark:border-l-gray-800 pl-3 relative py-3 children:flex"
-          >
-            <span aria-hidden="true" className={`
-              h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-300 transition duration-300
-              ${openNavbar ? "rotate-45 translate-y-[0.33rem]" : ""}
-            `} />
-            <span aria-hidden="true" className={`
-              mt-2 h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-300 transition duration-300
-              ${openNavbar ? "-rotate-45 -translate-y-[0.33rem]" : ""}
-            `} />
-          </button>
+        {/* Mobile Navigation Dropdown */}
+        <div
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            isOpen
+              ? 'max-h-screen opacity-100'
+              : 'max-h-0 opacity-0 pointer-events-none'
+          } overflow-hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-b-lg border-t border-gray-200 dark:border-gray-800`}
+        >
+          <div className="py-3 space-y-1">
+            {content.header.navigation.map((item, index) => (
+              <Link
+                key={index}
+                href={item.path}
+                className={`block px-4 py-2 rounded-lg font-poppins text-sm transition-colors ${
+                  pathname === item.path
+                    ? 'text-[#DF6D14] dark:text-[#9DC08B] bg-gray-100 dark:bg-gray-800'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
+              >
+                {item.title}
+              </Link>
+            ))}
+
+            {/* Theme Toggle - Mobile Only */}
+            <button
+              onClick={toggleTheme}
+              className="md:hidden w-full flex items-center px-4 py-2 rounded-lg font-poppins text-sm text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle theme"
+            >
+              <span className="flex items-center">
+                {theme === 'dark' ? (
+                  <>
+                    <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Light Mode
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    Dark Mode
+                  </>
+                )}
+              </span>
+            </button>
+          </div>
         </div>
       </nav>
     </header>
