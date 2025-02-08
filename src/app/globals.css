@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  :root {
+    --font-bebas: 'Bebas Neue', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors;
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bebas;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,10 +26,4 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }

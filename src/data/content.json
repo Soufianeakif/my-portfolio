@@ -1,0 +1,165 @@
+{
+  "header": {
+    "name": "AKIF Soufiane",
+    "navigation": [
+      { "title": "Home", "path": "/" },
+      { "title": "About", "path": "/about" },
+      { "title": "Contact", "path": "/contact" },
+      { "title": "Skills", "path": "/skills" },
+      { "title": "Projects", "path": "/projects" }
+    ]
+  },
+  "hero": {
+    "title": "Full Stack Developer",
+    "subtitle": "Building digital experiences with modern technologies",
+    "description": "\"The best way to predict the future is to create it.\" -Peter Drucker",
+    "cta": [
+      {
+        "text": "View Projects",
+        "link": "/projects"
+      },
+      {
+        "text": "Contact Me",
+        "link": "#contact"
+      }
+    ]
+  },
+  "skills": {
+    "Frontend Development": [
+      {
+        "name": "React.js",
+        "level": "Expert",
+        "icon": "/images/skills/reactjs.png",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "TypeScript",
+        "level": "Expert",
+        "icon": "/images/skills/typescript.png",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Flutter",
+        "level": "Expert",
+        "icon": "/images/skills/flutter.png",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "React Native",
+        "level": "Expert",
+        "icon": "/images/skills/reactjs.png",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "JavaScript",
+        "level": "Expert",
+        "icon": "/images/skills/javascript.png",
+        "yearsOfExperience": 5
+      }
+    ],
+    "Backend Development": [
+      {
+        "name": "PHP",
+        "level": "Advanced",
+        "icon": "/images/skills/php.png",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Node.js",
+        "level": "Advanced",
+        "icon": "/images/skills/nodejs.png",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Laravel",
+        "level": "Advanced",
+        "icon": "/images/skills/laravel.webp",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "MySQL",
+        "level": "Advanced",
+        "icon": "/images/skills/mysql.png",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "MongoDB",
+        "level": "Intermediate",
+        "icon": "/images/skills/mongodb.png",
+        "yearsOfExperience": 2
+      }
+    ],
+    "DevOps & Tools": [
+      {
+        "name": "Git",
+        "level": "Advanced",
+        "icon": "/images/skills/git.png",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Docker",
+        "level": "Intermediate",
+        "icon": "/images/skills/docker.png",
+        "yearsOfExperience": 2
+      }
+    ],
+    "Design & Modeling": [
+      {
+        "name": "UML",
+        "level": "Advanced",
+        "icon": "/images/skills/uml.png",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Figma",
+        "level": "Intermediate",
+        "icon": "/images/skills/figma.png",
+        "yearsOfExperience": 2
+      }
+    ],
+    "Methodologies": [
+      {
+        "name": "Agile-Scrum",
+        "level": "Advanced",
+        "icon": "/images/skills/agile.webp",
+        "yearsOfExperience": 3
+      }
+    ]
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Passionate full-stack developer specializing in Laravel, React, Flutter, and Node.js, with expertise in database management, API development, and UI/UX design. I build scalable SaaS solutions, mobile apps, and custom web platforms. Experienced in Agile development and cloud deployment, I thrive on solving complex technical challenges and delivering high-quality, user-centric applications.",
+    "image": "/images/logo.webp",
+    "details": [
+      "🎓 Computer Science Graduate",
+      "📚 Continuous Learner staying ahead with the latest tech trends",
+      "💻 Software Engineer with experience in SaaS",
+      "🚀 Entrepreneurial Mindset"
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "name": "Centre d'affaire",
+      "description": "A serviced office is an office or office building that is fully equipped and managed by a facility management company.",
+      "logo": "/images/projects/centredaffaire.jpg",
+      "link": "https://centredaffaire.rf.gd/",
+      "technologies": ["HTML/CSS/JS", "Tailwindcss", "PHP", "MySql"]
+    },
+    {
+      "id": 2,
+      "name": "Up or Nah?",
+      "description": "Designed to test players' knowledge of popular search trends while keeping them entertained.",
+      "logo": "/images/projects/upornah.gif",
+      "link": "https://github.com/Soufianeakif/up-or-nah",
+      "technologies": ["TypeScript", "React Native", "Expo"]
+    }
+  ],
+  "footer": {
+    "socialLinks": [
+      { "platform": "GitHub", "url": "https://github.com/Soufianeakif" },
+      { "platform": "LinkedIn", "url": "https://linkedin.com/in/soufiane-akif" }
+    ],
+    "copyright": "Created with ❤️ by AKIF Soufiane"
+  }
+}
