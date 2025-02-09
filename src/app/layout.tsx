@@ -1,18 +1,15 @@
 import { ThemeProvider } from '@/context/ThemeProvider';
 import './globals.css';
-import { Bebas_Neue, Poppins } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import type { Metadata } from 'next';
-
-const bebas = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-bebas',
-});
+import { Analytics } from "@/components/analytics";
 
 const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-poppins',
+  display: 'swap',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  preload: true,
+  variable: '--font-poppins'
 });
 
 export const metadata: Metadata = {
@@ -30,9 +27,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${bebas.variable} font-poppins bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={`${poppins.variable} font-poppins bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors`}>
         <ThemeProvider>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
