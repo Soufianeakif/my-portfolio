@@ -1,30 +1,26 @@
-import { ThemeProvider } from '@/context/ThemeProvider';
-import './globals.css';
-import { Poppins } from 'next/font/google';
-import type { Metadata } from 'next';
-import { Analytics } from "@/components/analytics";
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   preload: true,
-  variable: '--font-poppins'
+  variable: "--font-poppins"
 });
 
 export const metadata: Metadata = {
-  title: "AKIF Soufiane's Portfolio",
-  description: "Welcome to AKIF Soufiane's portfolio - Full Stack Developer",
-  icons: {
-    icon: '/images/logo.webp',
-  },
+  title: "Soufiane Akif - Portfolio",
+  description: "Portfolio of Soufiane Akif - Full Stack Developer",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -33,7 +29,6 @@ export default function RootLayout({
       <body className={`${poppins.variable} font-poppins bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors`}>
         <ThemeProvider>
           {children}
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>
