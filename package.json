@@ -13,6 +13,7 @@
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
     "react-type-animation": "^3.2.0"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/yargs": "^17.0.33",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",

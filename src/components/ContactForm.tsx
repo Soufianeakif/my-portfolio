@@ -1,122 +1,99 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import Script from 'next/script';
+import React, { useState, useRef, useEffect } from 'react';
 
 declare global {
   interface Window {
     grecaptcha: any;
-    onRecaptchaLoad: () => void;
   }
 }
 
-export const ContactForm = () => {
+export default function ContactForm() {
+  const [result, setResult] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
   const [recaptchaError, setRecaptchaError] = useState<string | null>(null);
-  const recaptchaRef = useRef<HTMLDivElement>(null);
-  const recaptchaWidgetId = useRef<number | null>(null);
-
-  const initializeRecaptcha = () => {
-    if (window.grecaptcha && recaptchaRef.current && !recaptchaWidgetId.current) {
-      try {
-        recaptchaWidgetId.current = window.grecaptcha.render(recaptchaRef.current, {
-          sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-          callback: () => setRecaptchaError(null),
-          'expired-callback': () => {
-            setRecaptchaError('reCAPTCHA has expired, please verify again');
-            if (recaptchaWidgetId.current !== null) {
-              window.grecaptcha.reset(recaptchaWidgetId.current);
-            }
-          },
-        });
-        setRecaptchaLoaded(true);
-      } catch (error) {
-        console.error('Error rendering reCAPTCHA:', error);
-        setRecaptchaError('Error loading reCAPTCHA. Please refresh the page.');
-      }
-    }
-  };
 
   useEffect(() => {
-    // Define the callback function that will be called when reCAPTCHA script loads
-    window.onRecaptchaLoad = () => {
-      initializeRecaptcha();
-    };
-
-    // If grecaptcha is already loaded, initialize it
-    if (window.grecaptcha && window.grecaptcha.ready) {
-      window.grecaptcha.ready(initializeRecaptcha);
-    }
+    // Load reCAPTCHA script
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js`;
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
 
     return () => {
-      window.onRecaptchaLoad = () => {};
+      document.body.removeChild(script);
     };
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setResult("");
+    setRecaptchaError(null);
+
     try {
-      const recaptchaResponse = window.grecaptcha.getResponse(recaptchaWidgetId.current);
-      if (!recaptchaResponse) {
+      // Get reCAPTCHA response
+      const recaptchaValue = window.grecaptcha?.getResponse();
+      
+      if (!recaptchaValue) {
         setRecaptchaError('Please complete the reCAPTCHA verification');
+        setIsSubmitting(false);
         return;
       }
 
-      setIsSubmitting(true);
-      setSubmitStatus('idle');
-      setRecaptchaError(null);
+      const formData = new FormData(event.currentTarget);
+      const formValues = {
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+        subject: "New Contact Form Submission",
+      };
 
-      const formData = new FormData(e.currentTarget);
-      formData.append('g-recaptcha-response', recaptchaResponse);
-
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(formValues)
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        setSubmitStatus('success');
-        (e.target as HTMLFormElement).reset();
-        if (recaptchaWidgetId.current !== null) {
-          window.grecaptcha.reset(recaptchaWidgetId.current);
+        setResult("Thank you for your message! I'll get back to you soon.");
+        if (formRef.current) {
+          formRef.current.reset();
         }
+        window.grecaptcha?.reset();
       } else {
-        setSubmitStatus('error');
+        throw new Error(data.message || "Failed to send message");
       }
     } catch (error) {
-      setSubmitStatus('error');
+      console.error("Error:", error);
+      setResult("Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <>
-      <Script
-        src={`https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit`}
-        strategy="afterInteractive"
-      />
-      
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bebas text-gray-900 dark:text-white mb-4 tracking-wide">
-              Get In Touch
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 font-poppins">
-              Have a question or want to work together? Feel free to reach out!
+    <section className="relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-lg mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Contact Me</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Feel free to reach out to me for any questions or opportunities!
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY} />
-            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
-
+          <form ref={formRef} onSubmit={onSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 font-poppins mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Name
               </label>
               <input
@@ -130,7 +107,7 @@ export const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 font-poppins mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Email
               </label>
               <input
@@ -144,7 +121,7 @@ export const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 font-poppins mb-1">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Message
               </label>
               <textarea
@@ -153,46 +130,44 @@ export const ContactForm = () => {
                 required
                 rows={4}
                 className="block w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#DF6D14] focus:border-transparent outline-none transition-colors font-poppins resize-none"
-                placeholder="Your message..."
+                placeholder="Your message"
               />
             </div>
 
             <div className="flex flex-col items-center space-y-4">
-              <div ref={recaptchaRef} className="g-recaptcha" />
+              <div 
+                className="g-recaptcha" 
+                data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              ></div>
               {recaptchaError && (
-                <p className="text-red-500 dark:text-red-400 text-sm font-poppins">
-                  {recaptchaError}
-                </p>
+                <p className="text-red-500 dark:text-red-400 text-sm">{recaptchaError}</p>
               )}
             </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-6 py-3 text-white font-medium rounded-lg transition-all duration-200 font-poppins
-                  ${isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-[#DF6D14] hover:bg-[#DF6D14]/90'}`}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </div>
-
-            {submitStatus === 'success' && (
-              <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 font-poppins text-sm">
-                Thank you for your message! I'll get back to you soon.
-              </div>
-            )}
-
-            {submitStatus === 'error' && (
-              <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 font-poppins text-sm">
-                Sorry, something went wrong. Please try again later.
-              </div>
-            )}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full px-6 py-3 text-white font-medium rounded-lg transition-colors ${
+                isSubmitting
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-[#DF6D14] hover:bg-[#DF6D14]/90'
+              }`}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
           </form>
+
+          {result && (
+            <div className={`mt-4 p-4 rounded-lg text-center ${
+              result.includes("Thank you")
+                ? "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                : "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
+            }`}>
+              {result}
+            </div>
+          )}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
-};
+}

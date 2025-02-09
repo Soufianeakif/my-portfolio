@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import content from '@/data/content.json';
 
 export const Footer = () => {
