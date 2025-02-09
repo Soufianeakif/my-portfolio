@@ -42,6 +42,8 @@ export default function ProjectsPage() {
                     alt={project.name}
                     fill
                     className="object-cover"
+                    unoptimized={project.logo.endsWith('.gif')}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-6">

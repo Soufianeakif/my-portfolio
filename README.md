@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and a clean, professional design.
 
-![Portfolio Preview](public/images/logo.webp)
+![Portfolio Preview](public/images/screencapture-my-portfolio.png)
 
 ## 🌟 Features
 

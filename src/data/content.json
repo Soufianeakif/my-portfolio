@@ -29,31 +29,31 @@
       {
         "name": "React.js",
         "level": "Expert",
-        "icon": "/images/skills/reactjs.png",
+        "icon": "/images/skills/reactjs.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "TypeScript",
         "level": "Expert",
-        "icon": "/images/skills/typescript.png",
+        "icon": "/images/skills/typescript.webp",
         "yearsOfExperience": 3
       },
       {
         "name": "Flutter",
         "level": "Expert",
-        "icon": "/images/skills/flutter.png",
+        "icon": "/images/skills/flutter.webp",
         "yearsOfExperience": 5
       },
       {
         "name": "React Native",
         "level": "Expert",
-        "icon": "/images/skills/reactjs.png",
+        "icon": "/images/skills/reactjs.webp",
         "yearsOfExperience": 5
       },
       {
         "name": "JavaScript",
         "level": "Expert",
-        "icon": "/images/skills/javascript.png",
+        "icon": "/images/skills/javascript.webp",
         "yearsOfExperience": 5
       }
     ],
@@ -61,13 +61,13 @@
       {
         "name": "PHP",
         "level": "Advanced",
-        "icon": "/images/skills/php.png",
+        "icon": "/images/skills/php.webp",
         "yearsOfExperience": 5
       },
       {
         "name": "Node.js",
         "level": "Advanced",
-        "icon": "/images/skills/nodejs.png",
+        "icon": "/images/skills/nodejs.webp",
         "yearsOfExperience": 4
       },
       {
@@ -79,13 +79,13 @@
       {
         "name": "MySQL",
         "level": "Advanced",
-        "icon": "/images/skills/mysql.png",
+        "icon": "/images/skills/mysql.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "MongoDB",
         "level": "Intermediate",
-        "icon": "/images/skills/mongodb.png",
+        "icon": "/images/skills/mongodb.webp",
         "yearsOfExperience": 2
       }
     ],
@@ -93,13 +93,13 @@
       {
         "name": "Git",
         "level": "Advanced",
-        "icon": "/images/skills/git.png",
+        "icon": "/images/skills/git.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "Docker",
         "level": "Intermediate",
-        "icon": "/images/skills/docker.png",
+        "icon": "/images/skills/docker.webp",
         "yearsOfExperience": 2
       }
     ],
@@ -107,13 +107,13 @@
       {
         "name": "UML",
         "level": "Advanced",
-        "icon": "/images/skills/uml.png",
+        "icon": "/images/skills/uml.webp",
         "yearsOfExperience": 3
       },
       {
         "name": "Figma",
         "level": "Intermediate",
-        "icon": "/images/skills/figma.png",
+        "icon": "/images/skills/figma.webp",
         "yearsOfExperience": 2
       }
     ],
@@ -142,7 +142,7 @@
       "id": 1,
       "name": "Centre d'affaire",
       "description": "A serviced office is an office or office building that is fully equipped and managed by a facility management company.",
-      "logo": "/images/projects/centredaffaire.jpg",
+      "logo": "/images/projects/centredaffaire.gif",
       "link": "https://centredaffaire.rf.gd/",
       "technologies": ["HTML/CSS/JS", "Tailwindcss", "PHP", "MySql"]
     },

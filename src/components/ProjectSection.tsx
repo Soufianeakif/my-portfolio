@@ -40,6 +40,8 @@ export const ProjectSection = () => {
                   alt={project.name}
                   fill
                   className="object-cover"
+                  unoptimized={project.logo.endsWith('.gif')}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">
