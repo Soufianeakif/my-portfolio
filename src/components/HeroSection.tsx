@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { ReactNode } from 'react';
 import content from '@/data/content.json';
 import { TypeAnimation } from 'react-type-animation';
 

@@ -2,9 +2,24 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
+interface ReCaptchaOptions {
+  sitekey: string;
+  size?: 'normal' | 'compact' | 'invisible';
+  theme?: 'light' | 'dark';
+  callback?: (response: string) => void;
+  'expired-callback'?: () => void;
+  'error-callback'?: () => void;
+}
+
 declare global {
   interface Window {
-    grecaptcha: any;
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: () => Promise<string>;
+      render: (element: HTMLElement, options: ReCaptchaOptions) => number;
+      reset: () => void;
+      getResponse: () => string;
+    };
   }
 }
 
