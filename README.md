@@ -1,6 +1,6 @@
 # Modern Portfolio Website
 
-A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and a clean, professional design.
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, multilingual content (English/French), and a clean, professional design.
 
 ![Portfolio Preview](public/images/screencapture-my-portfolio.png)
 
@@ -10,6 +10,8 @@ A modern, responsive portfolio website built with Next.js 15, TypeScript, and Ta
 - **Type-Safe**: Written in TypeScript for better development experience
 - **Responsive Design**: Looks great on all devices (mobile, tablet, desktop)
 - **Dark Mode**: Automatic and manual dark mode support
+- **Multilingual**: Full English and French language support with flag indicators
+- **Interactive Skills**: Visual skill level indicators with progress bars
 - **Smooth Animations**: Page transitions and scroll animations using Framer Motion
 - **Contact Form**: Integrated with reCAPTCHA for spam protection
 - **Performance Optimized**: Fast loading times with optimized images and assets
@@ -32,10 +34,14 @@ portfolio/
 │   │   ├── HeroSection.tsx # Hero section
 │   │   └── ...            # Other components
 │   ├── context/           # React context providers
+│   │   ├── ThemeProvider.tsx    # Dark mode context
+│   │   └── LanguageContext.jsx  # Language context
 │   ├── data/              # Static data and content
 │   └── styles/            # Global styles
 ├── public/                # Static files
-│   └── images/           # Image assets
+│   ├── images/           # Image assets
+│   │   └── flags/        # Language flag icons
+│   └── locales/          # Translation files
 └── package.json          # Project dependencies
 ```
 
@@ -92,6 +98,7 @@ portfolio/
 - **Content**: Edit `src/data/content.json` to update site content
 - **Styling**: Modify `tailwind.config.js` for theme customization
 - **Components**: Add/edit components in `src/components`
+- **Languages**: Update translations in `src/data/content.json`
 
 ## 📱 Responsive Design
 
@@ -108,6 +115,14 @@ portfolio/
 - Dark Mode Colors:
   - Background: #111827
   - Text: #F9FAFB
+
+## 🌐 Language Support
+
+- English (Default)
+- French
+- Easy to add more languages
+- Language switcher with flag icons
+- Persistent language selection
 
 ## 📦 Build & Deploy
 
