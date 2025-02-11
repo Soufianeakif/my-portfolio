@@ -6,11 +6,13 @@ import { usePathname } from 'next/navigation';
 import content from '@/data/content.json';
 import Image from 'next/image';
 import { useTheme } from '@/context/ThemeProvider';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
 
   // Close mobile menu when route changes
@@ -60,9 +62,27 @@ export const Header = () => {
                     : 'text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B]'
                 }`}
               >
-                {item.title}
+                {item[`title-${language}`]}
               </Link>
             ))}
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] border border-gray-200 dark:border-gray-700 transition-colors"
+              aria-label={`Switch to ${language === 'eng' ? 'French' : 'English'}`}
+            >
+              <div className="relative w-5 h-5 rounded-full overflow-hidden">
+                <Image
+                  src={`/images/flags/${language === 'eng' ? 'fr' : 'uk'}.svg`}
+                  alt={language === 'eng' ? 'French flag' : 'UK flag'}
+                  fill
+                  sizes="20px"
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-sm font-medium">{language === 'eng' ? 'Français' : 'English'}</span>
+            </button>
 
             {/* Theme Toggle - Desktop Only */}
             <button
@@ -120,15 +140,30 @@ export const Header = () => {
               <Link
                 key={index}
                 href={item.path}
-                className={`block px-4 py-2 rounded-lg font-poppins text-sm transition-colors ${
-                  pathname === item.path
-                    ? 'text-[#DF6D14] dark:text-[#9DC08B] bg-gray-100 dark:bg-gray-800'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] hover:bg-gray-100 dark:hover:bg-gray-800'
-                }`}
+                className="block w-full px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                onClick={() => setIsOpen(false)}
               >
-                {item.title}
+                {item[`title-${language}`]}
               </Link>
             ))}
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="md:hidden w-full flex items-center gap-3 px-4 py-2 rounded-lg font-poppins text-sm text-gray-600 dark:text-gray-400 hover:text-[#DF6D14] dark:hover:text-[#9DC08B] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label={`Switch to ${language === 'eng' ? 'French' : 'English'}`}
+            >
+              <div className="relative w-6 h-6 rounded-full overflow-hidden">
+                <Image
+                  src={`/images/flags/${language === 'eng' ? 'fr' : 'uk'}.svg`}
+                  alt={language === 'eng' ? 'French flag' : 'UK flag'}
+                  fill
+                  sizes="24px"
+                  className="object-cover"
+                />
+              </div>
+              <span>{language === 'eng' ? 'Français' : 'English'}</span>
+            </button>
 
             {/* Theme Toggle - Mobile Only */}
             <button

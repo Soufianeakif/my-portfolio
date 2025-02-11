@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import content from '@/data/content.json';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const ProjectSection = () => {
+  const { language } = useLanguage();
+
   return (
     <section className="py-20 bg-white dark:bg-gray-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,10 +20,10 @@ export const ProjectSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
+            {language === 'eng' ? 'Featured Projects' : 'Projets en Vedette'}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Some of my recent work and contributions
+            {language === 'eng' ? 'Some of my recent work and contributions' : 'Quelques-uns de mes travaux et contributions récents'}
           </p>
         </motion.div>
 
@@ -49,7 +52,7 @@ export const ProjectSection = () => {
                   {project.name}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {project.description}
+                  {project[`description-${language}`]}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
@@ -69,7 +72,7 @@ export const ProjectSection = () => {
                       rel="noopener noreferrer"
                       className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium"
                     >
-                      View Project
+                      {language === 'eng' ? 'View Project' : 'Voir le Projet'}
                     </Link>
                   )}
                 </div>
@@ -89,7 +92,7 @@ export const ProjectSection = () => {
             href="/projects"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-colors"
           >
-            View All Projects
+            {language === 'eng' ? 'View All Projects' : 'Voir Tous les Projets'}
           </Link>
         </motion.div>
       </div>

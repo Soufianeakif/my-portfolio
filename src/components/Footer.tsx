@@ -1,9 +1,11 @@
 'use client';
 
 import content from '@/data/content.json';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { language } = useLanguage();
 
   return (
     <footer className="relative mt-16">
@@ -39,7 +41,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-200 dark:border-gray-800">
           <p className="py-8 text-sm text-center text-gray-600 dark:text-gray-400 font-poppins">
-            {content.footer.copyright} - {currentYear}.
+            {content.footer[`copyright-${language}`]} - {currentYear}.
           </p>
         </div>
       </div>

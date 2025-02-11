@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import content from '@/data/content.json';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface SkillsSectionProps {
   showHeader?: boolean;
@@ -10,7 +11,8 @@ interface SkillsSectionProps {
 
 interface SkillCategory {
   name: string;
-  level: string;
+  'level-eng': string;
+  'level-fr': string;
   icon: string;
   yearsOfExperience: number;
 }
@@ -25,7 +27,22 @@ interface SkillsContent {
 
 const skillsContent = content.skills as SkillsContent;
 
+const getProgressValue = (level: string) => {
+  const levels: { [key: string]: number } = {
+    'Beginner': 25,
+    'Intermediate': 50,
+    'Advanced': 75,
+    'Expert': 100,
+    'Débutant': 25,
+    'Intermédiaire': 50,
+    'Avancé': 75,
+    'Expert': 100
+  };
+  return levels[level] || 50;
+};
+
 export const SkillsSection = ({ showHeader = true }: SkillsSectionProps) => {
+  const { language } = useLanguage();
   const categories = Object.keys(skillsContent);
 
   return (
@@ -68,22 +85,38 @@ export const SkillsSection = ({ showHeader = true }: SkillsSectionProps) => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.4, delay: skillIndex * 0.1 }}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-6"
                   >
-                    <div className="flex flex-col items-center p-4">
-                      <Image
-                        src={skill.icon}
-                        alt={skill.name}
-                        width={64}
-                        height={64}
-                        className="mb-4"
-                      />
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <div className="flex flex-col items-center">
+                      <div className="relative w-16 h-16 mb-4">
+                        <Image
+                          src={skill.icon}
+                          alt={skill.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                         {skill.name}
                       </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {skill.level}
-                      </p>
+                      <div className="w-full space-y-2">
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-gray-600 dark:text-gray-300">
+                            {skill[`level-${language}`]}
+                          </span>
+                          <span className="text-gray-500 dark:text-gray-400">
+                            {skill.yearsOfExperience}y
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${getProgressValue(skill[`level-${language}`])}%` }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            className="h-full rounded-full bg-[#DF6D14] dark:bg-[#9DC08B]"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 ))}

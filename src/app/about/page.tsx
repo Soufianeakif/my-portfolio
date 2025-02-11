@@ -5,8 +5,10 @@ import { Footer } from '@/components/Footer';
 import Image from 'next/image';
 import content from '@/data/content.json';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutPage() {
+  const { language } = useLanguage();
   return (
     <>
       <Header />
@@ -29,10 +31,10 @@ export default function AboutPage() {
               </h1>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {content.about.description}
+                  {content.about[`description-${language}`]}
                 </p>
                 <ul className="space-y-2 mb-6">
-                  {content.about.details.map((detail, index) => (
+                  {content.about[`details-${language}`].map((detail, index) => (
                     <li key={index} className="text-gray-600 dark:text-gray-300">
                       {detail}
                     </li>

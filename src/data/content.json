@@ -2,17 +2,40 @@
   "header": {
     "name": "AKIF Soufiane",
     "navigation": [
-      { "title": "Home", "path": "/" },
-      { "title": "About", "path": "/about" },
-      { "title": "Contact", "path": "/contact" },
-      { "title": "Skills", "path": "/skills" },
-      { "title": "Projects", "path": "/projects" }
+      { 
+        "title-eng": "Home",
+        "title-fr": "Accueil",
+        "path": "/"
+      },
+      { 
+        "title-eng": "About",
+        "title-fr": "À propos",
+        "path": "/about"
+      },
+      { 
+        "title-eng": "Contact",
+        "title-fr": "Contact",
+        "path": "/contact"
+      },
+      { 
+        "title-eng": "Skills",
+        "title-fr": "Compétences",
+        "path": "/skills"
+      },
+      { 
+        "title-eng": "Projects",
+        "title-fr": "Projets",
+        "path": "/projects"
+      }
     ]
   },
   "hero": {
-    "title": "Full Stack Developer",
-    "subtitle": "Building digital experiences with modern technologies",
-    "description": "\"The best way to predict the future is to create it.\" -Peter Drucker",
+    "title-eng": "Full Stack Developer",
+    "title-fr": "Developpeur Full Stack",
+    "subtitle-eng": "Building digital experiences with modern technologies",
+    "subtitle-fr": "Construire des experiences digitales avec les technologies modernes",
+    "description-eng": "\"The best way to predict the future is to create it.\" -Peter Drucker",
+    "description-fr": "\"La meilleure façon de prédire le futur est de le creer.\" -Peter Drucker",
     "cta": [
       {
         "text": "View Projects",
@@ -28,31 +51,36 @@
     "Frontend Development": [
       {
         "name": "React.js",
-        "level": "Expert",
+        "level-eng": "Expert",
+        "level-fr": "Expert",
         "icon": "/images/skills/reactjs.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "TypeScript",
-        "level": "Expert",
+        "level-eng": "Expert",
+        "level-fr": "Expert",
         "icon": "/images/skills/typescript.webp",
         "yearsOfExperience": 3
       },
       {
         "name": "Flutter",
-        "level": "Expert",
+        "level-eng": "Expert",
+        "level-fr": "Expert",
         "icon": "/images/skills/flutter.webp",
         "yearsOfExperience": 5
       },
       {
         "name": "React Native",
-        "level": "Expert",
+        "level-eng": "Expert",
+        "level-fr": "Expert",
         "icon": "/images/skills/reactjs.webp",
         "yearsOfExperience": 5
       },
       {
         "name": "JavaScript",
-        "level": "Expert",
+        "level-eng": "Expert",
+        "level-fr": "Expert",
         "icon": "/images/skills/javascript.webp",
         "yearsOfExperience": 5
       }
@@ -60,31 +88,36 @@
     "Backend Development": [
       {
         "name": "PHP",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/php.webp",
         "yearsOfExperience": 5
       },
       {
         "name": "Node.js",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/nodejs.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "Laravel",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/laravel.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "MySQL",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/mysql.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "MongoDB",
-        "level": "Intermediate",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermediate",
         "icon": "/images/skills/mongodb.webp",
         "yearsOfExperience": 2
       }
@@ -92,13 +125,15 @@
     "DevOps & Tools": [
       {
         "name": "Git",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/git.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "Docker",
-        "level": "Intermediate",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermediate",
         "icon": "/images/skills/docker.webp",
         "yearsOfExperience": 2
       }
@@ -106,13 +141,15 @@
     "Design & Modeling": [
       {
         "name": "UML",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/uml.webp",
         "yearsOfExperience": 3
       },
       {
         "name": "Figma",
-        "level": "Intermediate",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermediate",
         "icon": "/images/skills/figma.webp",
         "yearsOfExperience": 2
       }
@@ -120,20 +157,29 @@
     "Methodologies": [
       {
         "name": "Agile-Scrum",
-        "level": "Advanced",
+        "level-eng": "Advanced",
+        "level-fr": "Advanced",
         "icon": "/images/skills/agile.webp",
         "yearsOfExperience": 3
       }
     ]
   },
   "about": {
-    "title": "About Me",
-    "description": "Passionate full-stack developer specializing in Laravel, React, Flutter, and Node.js, with expertise in database management, API development, and UI/UX design. I build scalable SaaS solutions, mobile apps, and custom web platforms. Experienced in Agile development and cloud deployment, I thrive on solving complex technical challenges and delivering high-quality, user-centric applications.",
+    "title-eng": "About Me",
+    "title-fr": "A propos de Moi",
+    "description-eng": "Passionate full-stack developer specializing in Laravel, React, Flutter, and Node.js, with expertise in database management, API development, and UI/UX design. I build scalable SaaS solutions, mobile apps, and custom web platforms. Experienced in Agile development and cloud deployment, I thrive on solving complex technical challenges and delivering high-quality, user-centric applications.",
+    "description-fr": "Developpeur full-stack passionné spécialisé dans Laravel, React, Flutter et Node.js, avec expertise dans la gestion de bases de données, le développement d'APIs et la conception d'interfaces utilisateur/UX. Je construis des solutions SaaS scalables, des applications mobiles et des plateformes web personnalisées. Experiencé dans le développement agile et la déploiement en nuage, j'ai pour objectif de trouver des solutions innovantes à des problèmes techniques complexes et de fournir des applications utilisateurs de haute qualité.",
     "image": "/images/logo.webp",
-    "details": [
+    "details-eng": [
       "🎓 Computer Science Graduate",
       "📚 Continuous Learner staying ahead with the latest tech trends",
       "💻 Software Engineer with experience in SaaS",
+      "🚀 Entrepreneurial Mindset"
+    ],
+    "details-fr": [
+      "🎓 Diplôme d'Informatique",
+      "📚 Apprenant continu restant en avance avec les dernières tendances technologiques",
+      "💻 Developpeur logiciel avec exprience dans les SaaS",
       "🚀 Entrepreneurial Mindset"
     ]
   },
@@ -141,7 +187,8 @@
     {
       "id": 1,
       "name": "Centre d'affaire",
-      "description": "A serviced office is an office or office building that is fully equipped and managed by a facility management company.",
+      "description-eng": "A serviced office is an office or office building that is fully equipped and managed by a facility management company.",
+      "description-fr": "Un bureau de service est un bureau ou un immeuble qui est entièrement équipé et géré par une entreprise de gestion de l'entrepot.",
       "logo": "/images/projects/centredaffaire.gif",
       "link": "https://centredaffaire.rf.gd/",
       "technologies": ["HTML/CSS/JS", "Tailwindcss", "PHP", "MySql"]
@@ -149,7 +196,8 @@
     {
       "id": 2,
       "name": "Up or Nah?",
-      "description": "Designed to test players' knowledge of popular search trends while keeping them entertained.",
+      "description-eng": "Designed to test players' knowledge of popular search trends while keeping them entertained.",
+      "description-fr": "Construit pour tester les connaissances des joueurs des tendances de recherche populaires tout en les gardant amusés.",
       "logo": "/images/projects/upornah.gif",
       "link": "https://github.com/Soufianeakif/up-or-nah",
       "technologies": ["TypeScript", "React Native", "Expo"]
@@ -160,6 +208,7 @@
       { "platform": "GitHub", "url": "https://github.com/Soufianeakif" },
       { "platform": "LinkedIn", "url": "https://linkedin.com/in/soufiane-akif" }
     ],
-    "copyright": "Created with ❤️ by AKIF Soufiane"
+    "copyright-eng": "Created with ❤️ by AKIF Soufiane",
+    "copyright-fr": "Créé avec ❤️ par AKIF Soufiane"
   }
 }

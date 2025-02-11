@@ -3,8 +3,11 @@
 import Link from 'next/link';
 import content from '@/data/content.json';
 import { TypeAnimation } from 'react-type-animation';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const HeroSection = () => {
+  const { language } = useLanguage();
+
   return (
     <section className="min-h-screen bg-white dark:bg-gray-950 flex items-center">
       <div className="absolute top-0 inset-x-0 h-64 flex items-start">
@@ -18,7 +21,7 @@ export const HeroSection = () => {
       
       <div className="relative mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 text-center space-y-10">
         <span className="border border-gray-500 px-3 py-0.5 rounded-full bg-gray-50 dark:bg-gray-950 bg-opacity-50 text-gray-700 dark:text-gray-300 inline-block mb-4 text-sm sm:text-base font-poppins">
-          Welcome to my portfolio
+          {language === 'eng' ? 'Welcome to my portfolio' : 'Bienvenue dans mon portfolio'}
         </span>
         <div className="text-gray-900 dark:text-white mx-auto max-w-5xl font-bebas text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-wide">
           <TypeAnimation
@@ -27,7 +30,7 @@ export const HeroSection = () => {
               1000,
               '|',
               500,
-              'A Full Stack Developer',
+              content.hero[`title-${language}`],
               1000,
             ]}
             wrapper="div"
@@ -42,20 +45,20 @@ export const HeroSection = () => {
           />
         </div>
         <p className="text-gray-700 dark:text-gray-300 mx-auto max-w-2xl text-sm sm:text-base md:text-lg font-poppins">
-          {content.hero.description}
+          {content.hero[`description-${language}`]}
         </p>
         <div className="flex justify-center items-center flex-wrap mx-auto gap-4">
           <Link
             href="/contact"
             className="px-6 py-3 rounded-lg bg-[#DF6D14] text-white font-medium hover:bg-[#DF6D14]/90 transition-colors duration-200 font-poppins"
           >
-            Contact Me
+            {language === 'eng' ? 'Contact Me' : 'Me Contacter'}
           </Link>
           <Link
             href="/projects"
             className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:border-[#DF6D14] hover:text-[#DF6D14] dark:hover:border-[#9DC08B] dark:hover:text-[#9DC08B] transition-colors duration-200 font-poppins"
           >
-            View Projects
+            {language === 'eng' ? 'View Projects' : 'Voir les Projets'}
           </Link>
         </div>
       </div>
