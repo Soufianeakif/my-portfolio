@@ -15,6 +15,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Soufiane Akif - Portfolio",
   description: "Portfolio of Soufiane Akif - Full Stack Developer",
+  icons: {
+    icon: '/images/favicon.ico'
+  }
 };
 
 export default function RootLayout({
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/favicon.ico" sizes="any" />
       </head>
       <body className={`${poppins.variable} font-poppins bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors`}>
         <ThemeProvider>
