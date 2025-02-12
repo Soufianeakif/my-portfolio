@@ -51,89 +51,89 @@
     "Frontend Development": [
       {
         "name": "React.js",
-        "level-eng": "Expert",
-        "level-fr": "Expert",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/reactjs.webp",
-        "yearsOfExperience": 4
+        "yearsOfExperience": 2
       },
       {
         "name": "TypeScript",
-        "level-eng": "Expert",
-        "level-fr": "Expert",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/typescript.webp",
-        "yearsOfExperience": 3
+        "yearsOfExperience": 2
       },
       {
         "name": "Flutter",
-        "level-eng": "Expert",
-        "level-fr": "Expert",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/flutter.webp",
-        "yearsOfExperience": 5
+        "yearsOfExperience": 1
       },
       {
         "name": "React Native",
-        "level-eng": "Expert",
-        "level-fr": "Expert",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/reactjs.webp",
-        "yearsOfExperience": 5
+        "yearsOfExperience": 1
       },
       {
         "name": "JavaScript",
-        "level-eng": "Expert",
-        "level-fr": "Expert",
+        "level-eng": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/javascript.webp",
-        "yearsOfExperience": 5
+        "yearsOfExperience": 3
       }
     ],
     "Backend Development": [
       {
         "name": "PHP",
         "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/php.webp",
-        "yearsOfExperience": 5
+        "yearsOfExperience": 4
       },
       {
         "name": "Node.js",
-        "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-eng": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/nodejs.webp",
-        "yearsOfExperience": 4
+        "yearsOfExperience": 2
       },
       {
         "name": "Laravel",
         "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/laravel.webp",
-        "yearsOfExperience": 4
+        "yearsOfExperience": 3
       },
       {
         "name": "MySQL",
         "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/mysql.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "MongoDB",
         "level-eng": "Intermediate",
-        "level-fr": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/mongodb.webp",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 1
       }
     ],
     "DevOps & Tools": [
       {
         "name": "Git",
         "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/git.webp",
         "yearsOfExperience": 4
       },
       {
         "name": "Docker",
         "level-eng": "Intermediate",
-        "level-fr": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/docker.webp",
         "yearsOfExperience": 2
       }
@@ -142,14 +142,14 @@
       {
         "name": "UML",
         "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/uml.webp",
         "yearsOfExperience": 3
       },
       {
         "name": "Figma",
         "level-eng": "Intermediate",
-        "level-fr": "Intermediate",
+        "level-fr": "Intermédiaire",
         "icon": "/images/skills/figma.webp",
         "yearsOfExperience": 2
       }
@@ -158,7 +158,7 @@
       {
         "name": "Agile-Scrum",
         "level-eng": "Advanced",
-        "level-fr": "Advanced",
+        "level-fr": "Avancé",
         "icon": "/images/skills/agile.webp",
         "yearsOfExperience": 3
       }
@@ -186,6 +186,15 @@
   "projects": [
     {
       "id": 1,
+      "name": "Speech Recognition",
+      "description-eng": "A voice-activated desktop app that recognizes speech commands to tell the time and open applications, enhancing hands-free control and accessibility.",
+      "description-fr": "Une application de bureau à commande vocale qui reconnaît les commandes vocales pour indiquer l'heure et ouvrir des applications, améliorant ainsi le contrôle mains libres et l'accessibilité.",
+      "logo": "/images/projects/speechrecognition.gif",
+      "link": "https://github.com/Soufianeakif/speech_recognition",
+      "technologies": ["Visual Basic.NET", "Windows Forms"]
+    },
+    {
+      "id": 2,
       "name": "Centre d'affaire",
       "description-eng": "A serviced office is an office or office building that is fully equipped and managed by a facility management company.",
       "description-fr": "Un bureau de service est un bureau ou un immeuble qui est entièrement équipé et géré par une entreprise de gestion de l'entrepot.",
@@ -194,7 +203,7 @@
       "technologies": ["HTML/CSS/JS", "Tailwindcss", "PHP", "MySql"]
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Up or Nah?",
       "description-eng": "Designed to test players' knowledge of popular search trends while keeping them entertained.",
       "description-fr": "Construit pour tester les connaissances des joueurs des tendances de recherche populaires tout en les gardant amusés.",
