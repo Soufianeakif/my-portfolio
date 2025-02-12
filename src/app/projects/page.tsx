@@ -5,8 +5,11 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import content from '@/data/content.json';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ProjectsPage() {
+  const { language } = useLanguage();
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 transition-colors">
       <Header />
@@ -50,7 +53,9 @@ export default function ProjectsPage() {
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {project.name}
                   </h2>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
+                    {project[`description-${language}`]}
+                  </p>
                   <div className="mb-4">
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (

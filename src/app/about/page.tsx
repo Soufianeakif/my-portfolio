@@ -6,9 +6,14 @@ import Image from 'next/image';
 import content from '@/data/content.json';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
+import { ContentType, Language } from '@/types/content';
+
+const typedContent = content as ContentType;
 
 export default function AboutPage() {
   const { language } = useLanguage();
+  const currentLanguage = language as Language;
+
   return (
     <>
       <Header />
@@ -27,22 +32,23 @@ export default function AboutPage() {
           >
             <div className="order-2 lg:order-1">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                About Me
+                {typedContent.about[`title-${currentLanguage}`]}
               </h1>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {content.about[`description-${language}`]}
+                  {typedContent.about[`description-${currentLanguage}`]}
                 </p>
                 <ul className="space-y-2 mb-6">
-                  {content.about[`details-${language}`].map((detail, index) => (
-                    <li key={index} className="text-gray-600 dark:text-gray-300">
-                      {detail}
+                  {typedContent.about[`details-${currentLanguage}`].map((detail, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-4 mt-8">
                   <a
-                    href={content.footer.socialLinks[0].url}
+                    href={typedContent.footer.socialLinks[0].url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 border border-[#DF6D14] dark:border-[#9DC08B] text-base font-medium rounded-md text-[#DF6D14] dark:text-[#9DC08B] hover:bg-[#DF6D14] dark:hover:bg-[#9DC08B] hover:text-white dark:hover:text-gray-900 transition-colors"
@@ -50,7 +56,7 @@ export default function AboutPage() {
                     GitHub
                   </a>
                   <a
-                    href={content.footer.socialLinks[1].url}
+                    href={typedContent.footer.socialLinks[1].url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 border border-[#DF6D14] dark:border-[#9DC08B] text-base font-medium rounded-md text-[#DF6D14] dark:text-[#9DC08B] hover:bg-[#DF6D14] dark:hover:bg-[#9DC08B] hover:text-white dark:hover:text-gray-900 transition-colors"
@@ -68,7 +74,7 @@ export default function AboutPage() {
             >
               <div className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[500px] aspect-square mx-auto relative">
                 <Image
-                  src={content.about.image}
+                  src={typedContent.about.image}
                   alt="Profile"
                   fill
                   className="object-cover rounded-2xl shadow-lg"

@@ -27,7 +27,7 @@ interface SkillsContent {
 
 const skillsContent = content.skills as SkillsContent;
 
-const getProgressValue = (level: string) => {
+const getLevelPercentage = (level: string): number => {
   const levels: { [key: string]: number } = {
     'Beginner': 25,
     'Intermediate': 50,
@@ -35,8 +35,7 @@ const getProgressValue = (level: string) => {
     'Expert': 100,
     'Débutant': 25,
     'Intermédiaire': 50,
-    'Avancé': 75,
-    'Expert': 100
+    'Avancé': 75
   };
   return levels[level] || 50;
 };
@@ -111,7 +110,7 @@ export const SkillsSection = ({ showHeader = true }: SkillsSectionProps) => {
                         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                           <motion.div
                             initial={{ width: 0 }}
-                            animate={{ width: `${getProgressValue(skill[`level-${language}`])}%` }}
+                            animate={{ width: `${getLevelPercentage(skill[`level-${language}`])}%` }}
                             transition={{ duration: 1, delay: 0.5 }}
                             className="h-full rounded-full bg-[#DF6D14] dark:bg-[#9DC08B]"
                           />
