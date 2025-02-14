@@ -14,7 +14,9 @@ export type Project = {
   'description-eng': string;
   'description-fr': string;
   logo: string;
-  link: string;
+  'link-github'?: string;
+  'link-demo'?: string;
+  link?: string;
   technologies: string[];
 };
 
