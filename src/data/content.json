@@ -186,15 +186,25 @@
   "projects": [
     {
       "id": 1,
-      "name": "Speech Recognition",
-      "description-eng": "A voice-activated desktop app that recognizes speech commands to tell the time and open applications, enhancing hands-free control and accessibility.",
-      "description-fr": "Une application de bureau à commande vocale qui reconnaît les commandes vocales pour indiquer l'heure et ouvrir des applications, améliorant ainsi le contrôle mains libres et l'accessibilité.",
-      "logo": "/images/projects/speechrecognition.gif",
-      "link-github": "https://github.com/Soufianeakif/speech_recognition",
-      "technologies": ["Visual Basic.NET", "Windows Forms"]
+      "name": "Quoterest",
+      "description-eng": "To share quotes and get inspired by them. also you can add your own quotes.",
+      "description-fr": "Pour partager des citations et vous inspirer. aussi vous pouvez ajouter vos propres citations.",
+      "logo": "/images/projects/quoterest.gif",
+      "link-demo": "https://quoterest.netlify.app/",
+      "technologies": ["TypeScript", "Next.js", "Tailwindcss", "Postgresql"]
     },
     {
       "id": 2,
+      "name": "Up or Nah?",
+      "description-eng": "Designed to test players' knowledge of popular search trends while keeping them entertained.",
+      "description-fr": "Construit pour tester les connaissances des joueurs des tendances de recherche populaires tout en les gardant amusés.",
+      "logo": "/images/projects/upornah.gif",
+      "link-github": "https://github.com/Soufianeakif/up-or-nah",
+      "link-demo": "https://upornah.netlify.app/",
+      "technologies": ["TypeScript", "React Native", "Expo"]
+    },
+    {
+      "id": 3,
       "name": "Centre d'affaire",
       "description-eng": "A serviced office is an office or office building that is fully equipped and managed by a facility management company.",
       "description-fr": "Un bureau de service est un bureau ou un immeuble qui est entièrement équipé et géré par une entreprise de gestion de l'entrepot.",
@@ -203,14 +213,13 @@
       "technologies": ["HTML/CSS/JS", "Tailwindcss", "PHP", "MySql"]
     },
     {
-      "id": 3,
-      "name": "Up or Nah?",
-      "description-eng": "Designed to test players' knowledge of popular search trends while keeping them entertained.",
-      "description-fr": "Construit pour tester les connaissances des joueurs des tendances de recherche populaires tout en les gardant amusés.",
-      "logo": "/images/projects/upornah.gif",
-      "link-github": "https://github.com/Soufianeakif/up-or-nah",
-      "link-demo": "https://upornah.netlify.app/",
-      "technologies": ["TypeScript", "React Native", "Expo"]
+      "id": 4,
+      "name": "Speech Recognition",
+      "description-eng": "A voice-activated desktop app that recognizes speech commands to tell the time and open applications, enhancing hands-free control and accessibility.",
+      "description-fr": "Une application de bureau à commande vocale qui reconnaît les commandes vocales pour indiquer l'heure et ouvrir des applications, améliorant ainsi le contrôle mains libres et l'accessibilité.",
+      "logo": "/images/projects/speechrecognition.gif",
+      "link-github": "https://github.com/Soufianeakif/speech_recognition",
+      "technologies": ["Visual Basic.NET", "Windows Forms"]
     }
   ],
   "footer": {
